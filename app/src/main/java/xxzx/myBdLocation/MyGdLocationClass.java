@@ -114,7 +114,7 @@ public class MyGdLocationClass implements AMapLocationListener
         //设置是否返回地址信息（默认返回地址信息）
         mLocationOption.setNeedAddress(true);
         //设置是否只定位一次,默认为false
-        mLocationOption.setOnceLocation(false);
+        mLocationOption.setOnceLocation(isMap);
         //设置是否强制刷新WIFI，默认为强制刷新
         mLocationOption.setWifiActiveScan(true);
         //设置是否允许模拟位置,默认为false，不允许模拟位置
@@ -166,39 +166,40 @@ public class MyGdLocationClass implements AMapLocationListener
                     amap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), 11));
                     isfirstLocation = false;
                 }
+                if (!isMap) {
+                    String result = GDLocationUtils.getLocationStr(loc);
 
-                String result = GDLocationUtils.getLocationStr(loc);
+                    //如果当前没有登录，退出以下操作
+                    if (mySingleClass.getUser() == null) {
+                        return;
+                    }
 
-                //如果当前没有登录，退出以下操作
-                if (mySingleClass.getUser() == null) {
-                    return;
+                    if (!mySingleClass.getUser().getLoginSuccess()) {
+                        return;
+                    }
+
+                    //将定位信息保存
+                    mySingleClass.setMyGdLocation(loc);
+
+                    double[] doubles = GPSUtil.gcj02_To_Bd09(loc.getLatitude(), loc.getLongitude());
+
+                    //写GPS文件
+                    writeGpsPoints(doubles[1] + "," + doubles[0] + ";");
+                    //设置|| GpsBeatTimeCount == 0,一开始就上传心跳数据
+                    if (GpsBeatTimeCount == GPSBEATTIME || GpsBeatTimeCount == 0) {
+                        GpsBeatTimeCount = 0;//重新计数
+                        //将GPS点上传服务器
+                        MyRunnable runnable = new MyRunnable();
+
+                        //转换坐标为百度地图
+                        runnable.setData(String.valueOf(doubles[1]), String.valueOf(doubles[0]));
+
+                        new Thread(runnable).start();
+                    }
+                    //GPS计数
+                    GpsBeatTimeCount++;
+                    Log.i("高德定位", result);
                 }
-
-                if (!mySingleClass.getUser().getLoginSuccess()) {
-                    return;
-                }
-
-                //将定位信息保存
-                mySingleClass.setMyGdLocation(loc);
-
-                double[] doubles = GPSUtil.gcj02_To_Bd09(loc.getLatitude(), loc.getLongitude());
-
-                //写GPS文件
-                writeGpsPoints(doubles[1] + "," + doubles[0] + ";");
-                //设置|| GpsBeatTimeCount == 0,一开始就上传心跳数据
-                if (GpsBeatTimeCount == GPSBEATTIME || GpsBeatTimeCount == 0) {
-                    GpsBeatTimeCount = 0;//重新计数
-                    //将GPS点上传服务器
-                    MyRunnable runnable = new MyRunnable();
-
-                    //转换坐标为百度地图
-                    runnable.setData(String.valueOf(doubles[1]), String.valueOf(doubles[0]));
-
-                    new Thread(runnable).start();
-                }
-                //GPS计数
-                GpsBeatTimeCount++;
-                Log.i("高德定位", result);
                 break;
             //停止定位
             case GDLocationUtils.MSG_LOCATION_STOP:
