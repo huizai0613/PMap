@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="xxzx.activity"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+    <!-- <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" ></permission> -->
+    <!-- <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" ></uses-permission> -->
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <!-- 自启动权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 用于访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入缓存定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!--定位包、导航包需要的额外权限（注：基础权限也需要）-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <!--使用本地广播-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+    <application
+        android:name="xxzx.crash.CrashApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/MyAppTheme">
+
+        <!--守护service-->
+        <service
+            android:name="xxzx.myService.service.Service1"
+            android:enabled="true"
+            android:process=":service1">
+        </service>
+        <service
+            android:name="xxzx.myService.service.Service2"
+            android:enabled="true"
+            android:process=":service2">
+        </service>
+
+
+        <service android:name="com.amap.api.location.APSService"/>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="70b7066aeef7f1b68552ca6faf4e2fa9"></meta-data>
+
+        <activity
+            android:name=".DataUnZipActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+
+        <!--QQ分享-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="tencentAppId"/>
+            </intent-filter>
+        </activity>
+        <!--QQ分享-->
+        <activity
+            android:name=".MainDrawerActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".PublicMapActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_route_planning"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+        <activity
+            android:name=".PublicMapActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_route_planning"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".PoiAndRoute.RoutePlanningActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_route_planning"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+        <activity
+            android:name=".PoiAndRoute.PoiSearchActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+        <!-- 实时导航 -->
+        <activity
+            android:name=".PoiAndRoute.GpsNaviActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <!-- 离线地图 -->
+        <activity
+            android:name=".OfflineMap.OfflineMapActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+        <!-- 离线地图下载 -->
+        <activity
+            android:name=".OfflineMap.OfflineMapGgActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_offline_down"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+        <!-- 高德离线地图下载 -->
+        <activity
+            android:name=".OfflineMap.OfflineMapGdActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_offline_gaode"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+        <activity
+            android:name=".ImagePagerActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label=""
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".EditDataCreateActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_edit_data_create_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".EditDataLocalActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_edit_data_local_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+        <activity
+            android:name=".MyGpsLineActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_gps_line"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".SysSettingActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_sys_setting"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+
+        <activity
+            android:name=".MyData.MyDataActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_my_data"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".DangerRadarActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_my_data"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+
+        <activity
+            android:name=".LoginActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_login"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.TaskSetting.PatrolPowerlineActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_power_line_task_setting"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.TaskSetting.ChnAndPoleActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_channel_pole"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".MyData.LocChnAndPoleActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_channel_pole"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.PoleDangerStatisticsActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.ChnDangerStatisticsActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+
+        <activity
+            android:name=".Patrol.MyTask.PoleDangerListActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.MyTask.ChnDangerListActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.MyTask.DangerSgDetailActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+
+        <activity
+            android:name=".MyData.DownloadPlineActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_pline_downlod"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Update.UpdatePlineActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_update_pline"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+
+        <activity
+            android:name=".Update.UpdateChnAndPoleActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_update_pline"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+
+        <activity
+            android:name=".Update.UpdateDangerActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+
+        <activity
+            android:name=".ImageViewActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_image"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".Patrol.MyTask.MyTaskPowerlineActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_pline_mytask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.MyTask.MyTaskChnAndPoleActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_channel_pole"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+        <activity
+            android:name=".Patrol.MyTask.PoleDangerAddActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+
+        <activity
+            android:name=".Patrol.MyTask.ChnDangerAddActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+
+
+        <activity
+            android:name=".Patrol.MyTask.PoleDangerUpdateActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+
+
+        <activity
+            android:name=".Patrol.MyTask.ChnDangerUpdateActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"
+            android:windowSoftInputMode="stateHidden"></activity>
+
+
+        <activity
+            android:name=".Patrol.Record.RecordChnAndPoleActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/activity_app_patrol_record"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyAppTheme"></activity>
+
+
+        <activity
+            android:name="xxzx.activityNavi.IndexActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="xxzx.activityNavi.BasicNaviActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="xxzx.activityNavi.CustomRouteActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="xxzx.activityNavi.CustomEnlargedCrossDisplayActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.CustomDriveWayViewActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.HudDisplayActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.IntelligentBroadcastActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.RoutePlanningActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.GPSNaviActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.CustomTrafficBarActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.MultipleRoutePlanningActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.GetNaviStepsAndLinksActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.NorthModeActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="xxzx.activityNavi.OverviewModeActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name="xxzx.Permissions.PermissionsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar.Permissions"></activity>
+
+
+    </application>
+
+</manifest>

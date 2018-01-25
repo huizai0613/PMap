@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+    </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_left"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="20dip"
+            android:orientation="horizontal"
+            android:background="@drawable/items_background_style"
+            >
+
+            <xxzx.myView.ImgButtonHorizontal
+                android:id="@+id/imgbtn_myLocation"
+                title="@string/name_img_btn_mylocation"
+                titleColor="@color/half_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></xxzx.myView.ImgButtonHorizontal>
+            <LinearLayout
+                android:layout_width="0.2dip"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dip"
+                android:orientation="horizontal"
+                android:background="@color/diver_list_item"
+
+                ></LinearLayout>
+
+            <xxzx.myView.ImgButtonHorizontal
+                android:id="@+id/imgbtn_mapLocation"
+                title="@string/name_img_btn_maplocation"
+                titleColor="@color/half_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></xxzx.myView.ImgButtonHorizontal>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dip"
+        android:background="@color/diver_list_item"
+        android:layout_marginTop="17dip"
+        >
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <xxzx.myView.MyListViewForScrollView
+            android:id="@+id/lv_poiResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dip"
+            android:layout_marginBottom="20dip"
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            android:background="@drawable/items_background_style"
+            android:divider="@drawable/list_item_divider"
+            android:dividerHeight="0.2dip"></xxzx.myView.MyListViewForScrollView>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <!-- -->
+    <!--<ListView-->
+        <!--android:id="@+id/lv_poiResult"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dip"-->
+        <!--android:layout_marginLeft="5dip"-->
+        <!--android:layout_marginRight="5dip"-->
+        <!--android:background="@drawable/items_background_style"-->
+        <!-->-->
+    <!--</ListView>-->
+
+
+</LinearLayout>

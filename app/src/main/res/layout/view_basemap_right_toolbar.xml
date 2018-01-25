@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="80dip"
+        android:orientation="vertical">
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <RelativeLayout
+                    android:layout_width="42dip"
+                    android:layout_height="42dip">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_right_btn_corner">
+                        <xxzx.myView.ImgButton
+                            android:id="@+id/imgbtn_map_switch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"></xxzx.myView.ImgButton>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow android:layout_marginTop="10dp">
+                <RelativeLayout
+                    android:layout_width="42dip"
+                    android:layout_height="42dip">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_right_btn_corner">
+                        <xxzx.myView.ImgButton
+                            android:id="@+id/imgbtn_map_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"></xxzx.myView.ImgButton>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_1"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dip"
+        android:layout_marginRight="10dip"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/imgbutton_mapzoom_background"
+            android:orientation="vertical">
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <TableRow >
+                    <ImageButton
+                        android:id="@+id/btn_map_zoomout"
+                        android:layout_width="42dip"
+                        android:layout_height="34dip"
+                        android:background="#00000000"
+                        android:src="@mipmap/map_zoomout" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_height="wrap_content"
+                    android:paddingTop="0dip">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.3dip"
+                        android:layout_marginLeft="5dip"
+                        android:layout_marginRight="5dip"
+                        android:background="#bfbfbf"
+                        android:orientation="vertical"></LinearLayout>
+                </TableRow>
+
+                <TableRow >
+                    <ImageButton
+                        android:id="@+id/btn_map_zoomin"
+                        android:layout_width="42dip"
+                        android:layout_height="34dip"
+                        android:background="#00000000"
+                        android:src="@mipmap/map_zoomin" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        >
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="24dip"
+            android:layout_height="24dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_marginLeft="10dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:typeface="serif"
+            android:fontFamily="sans-serif"
+            android:text="附近"
+            android:textColor="#212121"
+            android:textSize="14sp" />
+
+        <!--<CheckBox-->
+            <!--android:id="@+id/cbox_selected"-->
+            <!--android:layout_width="50dip"-->
+            <!--android:layout_height="50dip"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:gravity="center"-->
+            <!--android:checked="false"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="30dip"-->
+            <!--></CheckBox>-->
+
+        <ImageView
+            android:id="@+id/iv_checked"
+            android:layout_width="18dip"
+            android:layout_height="18dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:checked="false"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dip"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

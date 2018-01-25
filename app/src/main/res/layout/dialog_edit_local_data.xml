@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary">
+
+    <LinearLayout
+        android:layout_width="300dip"
+        android:layout_height="200dip"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <xxzx.myView.ImgButtonHorizontal
+            android:id="@+id/imgbtn_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            title="@string/name_img_btn_photo"
+            titleColor="@color/white"
+            android:layout_weight="1"
+            ></xxzx.myView.ImgButtonHorizontal>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.2dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginLeft="10dip"
+            android:background="@color/diver_list_item"></LinearLayout>
+        <xxzx.myView.ImgButtonHorizontal
+            android:id="@+id/imgbtn_map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            title="@string/name_img_btn_map"
+            titleColor="@color/white"
+            android:layout_weight="1"
+            ></xxzx.myView.ImgButtonHorizontal>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.2dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginLeft="10dip"
+            android:background="@color/diver_list_item"
+            ></LinearLayout>
+        <xxzx.myView.ImgButtonHorizontal
+            android:id="@+id/imgbtn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            title="@string/name_img_btn_delete"
+            titleColor="@color/white"
+            android:layout_weight="1"
+            ></xxzx.myView.ImgButtonHorizontal>
+
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/imgbtn_photo"-->
+            <!--android:layout_width="60dip"-->
+            <!--android:layout_height="60dip" />-->
+        <!--<ImageButton-->
+            <!--android:id="@+id/imgbtn_map"-->
+            <!--android:layout_width="60dip"-->
+            <!--android:layout_height="60dip" />-->
+        <!--<ImageButton-->
+            <!--android:id="@+id/imgbtn_delete"-->
+            <!--android:layout_width="60dip"-->
+            <!--android:layout_height="60dip" />-->
+
+
+    </LinearLayout>
+
+</RelativeLayout>

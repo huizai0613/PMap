@@ -1,0 +1,17 @@
+bin/
+gen/
+*.class
+.DS_Store
+*~
+.metadata/
+.settings/
+.gradle/
+.idea/
+build/
+*.sess
+*.iml
+*.apk
+*.log
+*.orig
+
+/local.properties

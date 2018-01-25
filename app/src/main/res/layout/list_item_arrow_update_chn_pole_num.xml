@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        >
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="20dip"
+            android:layout_height="20dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dip"
+            />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_marginLeft="10dip"
+            android:typeface="serif"
+            android:fontFamily="sans-serif"
+            android:text="附近"
+            android:textColor="#313131"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_levelColor"
+            android:layout_width="wrap_content"
+            android:layout_height="24dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="40dip"
+            android:background="@drawable/update_danger_num_bg"
+            >
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_centerVertical="true"
+                android:paddingLeft="20dip"
+                android:paddingRight="20dip"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="18dip"
+            android:layout_height="18dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:checked="false"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

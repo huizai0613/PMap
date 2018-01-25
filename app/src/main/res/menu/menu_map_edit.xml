@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_point"
+        android:orderInCategory="100"
+        android:title="点"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_polyline"
+        android:orderInCategory="100"
+        android:title="线"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/action_polygon"
+        android:orderInCategory="100"
+        android:title="面"
+        app:showAsAction="always|withText" />
+
+</menu>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dim64dp"
+    android:layout_height="@dimen/dim64dp"
+    android:layout_gravity="bottom|left"
+    android:visibility="visible"
+    android:background="@drawable/onivas_fab_circle"
+    >
+
+</ImageButton>
+
+

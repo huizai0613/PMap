@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <EditText
+            android:id="@+id/editText_Search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/btn_right"
+            android:layout_marginRight="80dip"
+            android:layout_marginLeft="5dp"
+            android:hint="请输入查询关键字…"
+            android:textColorHint="@color/white"
+            android:textColor="@android:color/white"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="16sp"
+            />
+
+        <Button
+            android:id="@+id/btn_right"
+            android:layout_width="64dip"
+            android:layout_height="28dip"
+            android:paddingLeft="4dip"
+            android:visibility="visible"
+            android:text="按钮"
+            android:textColor="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dip"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:background="@drawable/button_bg_toolbar"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>

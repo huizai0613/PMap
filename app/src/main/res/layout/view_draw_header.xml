@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="?attr/colorPrimary"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <TextView
+        android:id="@+id/id_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="5dip"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="未登录"/>
+    <TextView
+        android:id="@+id/id_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="5dip"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:text="今天是"/>
+
+    <ImageView
+        android:id="@+id/iv_user"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dip"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/btn_loginout"
+        android:layout_width="wrap_content"
+        android:layout_height="24dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="20dip"
+        android:textSize="14sp"
+        android:background="@drawable/button_bg_loginout"
+        android:text="登录"
+        android:textColor="@color/white"
+        />
+    </RelativeLayout>

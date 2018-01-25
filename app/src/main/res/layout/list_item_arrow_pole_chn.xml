@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        >
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="24dip"
+            android:layout_height="24dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_marginLeft="10dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:typeface="serif"
+            android:fontFamily="sans-serif"
+            android:text="附近"
+            android:textColor="#313131"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_numColor"
+            android:layout_width="28dip"
+            android:layout_height="28dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/patrol_statistic_level_bg_circle_red"
+            android:layout_marginRight="40dip">
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="18dip"
+            android:layout_height="18dip"
+            android:layout_gravity="center_vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:checked="false"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dip"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/rl_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginBottom="80dip"
+        android:layout_above="@+id/toolbar"
+        >
+        <xxzx.myView.ImgDangerNum
+            android:id="@+id/imgbtn_dangerupload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </xxzx.myView.ImgDangerNum>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginBottom="20dip"
+        android:layout_marginRight="10dip"
+        android:layout_alignParentRight="true"
+
+        android:layout_above="@+id/toolbar"
+        android:layout_width="42dip"
+        android:layout_height="42dip">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_right_btn_corner">
+
+            <xxzx.myView.ImgButton
+                android:id="@+id/imgbtn_nearbyUsers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"></xxzx.myView.ImgButton>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/toolbar"
+        android:layout_margin="5dip"
+        ></FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="54dip"
+        android:layout_alignParentBottom="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="0dip"
+            android:layout_marginLeft="0dip"
+            android:layout_marginTop="2dip"
+            android:layout_marginBottom="2dip"
+            android:background="@drawable/background_shodow"
+            android:orientation="horizontal"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dip"
+            android:layout_marginLeft="4dip"
+            android:layout_marginRight="4dip"
+            android:layout_marginTop="4dip"
+            android:background="@drawable/background_bottom_corner"
+            android:orientation="horizontal">
+
+            <xxzx.myView.ImgButtonHorizontal
+                android:id="@+id/imgbtn_navi"
+                title="@string/name_img_btn_navi"
+                titleColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></xxzx.myView.ImgButtonHorizontal>
+            <LinearLayout
+                android:layout_width="0.2dip"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dip"
+                android:orientation="horizontal"
+                android:background="@color/diver_list_item"
+
+                ></LinearLayout>
+
+            <xxzx.myView.ImgButtonHorizontal
+                android:id="@+id/imgbtn_edit"
+                title="@string/name_img_btn_edit"
+                titleColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></xxzx.myView.ImgButtonHorizontal>
+            <LinearLayout
+                android:layout_width="0.2dip"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dip"
+                android:orientation="horizontal"
+                android:background="@color/diver_list_item"
+
+                ></LinearLayout>
+            <xxzx.myView.ImgButtonHorizontal
+                android:id="@+id/imgbtn_patrol"
+                title="@string/name_img_btn_patrol"
+                titleColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></xxzx.myView.ImgButtonHorizontal>
+            <LinearLayout
+                android:layout_width="0.2dip"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dip"
+                android:layout_marginBottom="15dip"
+                android:orientation="horizontal"
+                android:background="@color/diver_list_item"
+
+                ></LinearLayout>
+            <xxzx.myView.ImgButtonHorizontal
+                android:id="@+id/imgbtn_tools"
+                title="@string/name_img_btn_tools"
+                titleColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"></xxzx.myView.ImgButtonHorizontal>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!--<xxzx.floatingactionbutton.FloatingActionsMenu-->
+        <!--android:id="@+id/multiple_actions_left"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginBottom="10dip"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--fab:fab_addButtonColorNormal="@color/colorAccent"-->
+        <!--fab:fab_addButtonColorPressed="@color/white"-->
+        <!--fab:fab_addButtonPlusIconColor="@color/white"-->
+        <!--fab:fab_addButtonStrokeVisible="false"-->
+        <!--fab:fab_expandDirection="right">-->
+
+        <!--<xxzx.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fab_measure"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--fab:fabSize="normal"-->
+            <!--fab:fab_colorNormal="@color/colorPrimary"-->
+            <!--fab:fab_colorPressed="@color/white" />-->
+
+        <!--<xxzx.floatingactionbutton.FloatingActionButton-->
+            <!--android:id="@+id/fab_createdata"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--fab:fab_colorNormal="@color/orangered"-->
+            <!--fab:fab_colorPressed="@color/white" />-->
+
+        <!--</xxzx.floatingactionbutton.FloatingActionsMenu>-->
+</RelativeLayout>

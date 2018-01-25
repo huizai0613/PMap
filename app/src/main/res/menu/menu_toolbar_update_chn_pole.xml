@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_channel"
+        android:orderInCategory="100"
+        android:title="通道"
+        app:showAsAction="withText|never" />
+    <item
+        android:id="@+id/action_pole"
+        android:orderInCategory="100"
+        android:title="杆塔"
+        app:showAsAction="withText|never" />
+
+</menu>

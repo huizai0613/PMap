@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="用户信息">
+        <menu>
+            <item
+                android:id="@+id/nav_pws_modify"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="修改密码" />
+            <item
+                android:id="@+id/nav_data_my"
+                android:icon="@android:drawable/ic_menu_manage"
+                android:title="我的数据" />
+            <item
+                android:id="@+id/nav_data_update"
+                android:icon="@android:drawable/ic_menu_camera"
+                android:title="数据上传" />
+            <item
+                android:id="@+id/nav_data_gpsline"
+                android:icon="@android:drawable/ic_menu_edit"
+                android:visible="false"
+                android:title="我的路径" />
+            <!--<item-->
+                <!--android:id="@+id/nav_data_powerline"-->
+                <!--android:icon="@android:drawable/ic_menu_camera"-->
+                <!--android:title="我的线路" />-->
+            <item
+                android:id="@+id/nav_data_local"
+                android:icon="@android:drawable/ic_menu_agenda"
+                android:title="我的收藏" />
+        </menu>
+    </item>
+
+
+    <item android:title="系统功能">
+        <menu>
+            <item
+                android:id="@+id/nav_offline_map"
+                android:icon="@android:drawable/ic_menu_gallery"
+                android:title="离线地图" />
+            <item
+                android:id="@+id/nav_sys_setting"
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="系统设置" />
+            <item
+                android:id="@+id/nav_app_exsit"
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="退出应用" />
+        </menu>
+    </item>
+
+</menu>

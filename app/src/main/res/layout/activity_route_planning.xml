@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="94dip"
+        android:layout_marginTop="20dip"
+        android:padding="5dip"
+        android:background="@drawable/items_background_style">
+
+        <xxzx.myView.ImgButton
+            android:id="@+id/imgbtn_switch"
+            android:layout_width="40dip"
+            android:layout_marginRight="5dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"></xxzx.myView.ImgButton>
+
+
+        <xxzx.myView.ImgButton
+            android:id="@+id/imgbtn_search"
+            android:layout_width="50dip"
+            android:layout_marginLeft="20dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"></xxzx.myView.ImgButton>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/imgbtn_search"
+            android:layout_toRightOf="@+id/imgbtn_switch"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dip"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_start"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_gravity="center" />
+                <Button
+                    android:id="@+id/btn_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dip"
+                    android:background="@drawable/imgbutton_bg_style"
+                    android:gravity="left|center"
+                    android:paddingLeft="1dp"
+                    android:text="输入起点…"
+                    android:textColor="@color/darkgray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0.2dip"
+                android:background="@color/diver_list_item"
+                android:orientation="vertical"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="42dip"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_end"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_gravity="center" />
+
+                <Button
+                    android:id="@+id/btn_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dip"
+                    android:background="@drawable/imgbutton_bg_style"
+                    android:gravity="left|center"
+                    android:paddingLeft="1dp"
+                    android:text="输入终点…"
+                    android:textColor="@color/darkgray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

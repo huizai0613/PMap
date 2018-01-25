@@ -1,0 +1,212 @@
+<resources>
+    <string name="app_name">易巡</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_completed">完成</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_download">下载</string>
+
+    <string name="permission">权限(permission)</string>
+    <string name="no_permissions">应用需要必要的运行权限</string>
+
+    <string name="settings">设置</string>
+    <string name="help">帮助</string>
+    <string name="string_help_text">当前应用缺少必要权限。\n\n请点击\"设置\"-\"权限\"-打开所需权限。\n\n最后点击两次后退按钮，即可返回。</string>
+    <string name="quit">退出</string>
+
+    <string name="action_cancel">全部取消</string>
+    <string name="action_selected">全部选中</string>
+
+    <!--activity的名称-->
+    <string name="activity_app_main_name">PMap</string>
+    <string name="activity_app_edit_data_create_name">编辑数据</string>
+    <string name="activity_app_edit_data_local_name">本地数据</string>
+    <string name="activity_app_data_load_name">本地数据列表</string>
+    <string name="activity_app_route_planning">路径规划</string>
+    <string name="activity_app_offline_down">离线地图下载</string>
+    <string name="activity_app_offline_gaode">高德地图下载</string>
+    <string name="activity_app_gps_line">我的路径</string>
+    <string name="activity_app_sys_setting">系统设置</string>
+    <string name="activity_app_power_line_task_setting">任务设置</string>
+    <string name="activity_app_power_line_select">选择</string>
+    <string name="activity_app_channel_pole">线路信息</string>
+    <string name="activity_app_power_channel">通道</string>
+    <string name="activity_app_power_pole">塔杆</string>
+    <string name="activity_app_my_data">我的数据</string>
+    <string name="activity_app_danger_radar">隐患点信息</string>
+    <string name="activity_app_map_pline">线路定位</string>
+    <string name="activity_app_login">用户登录</string>
+    <string name="activity_app_pline_downlod">线路下载</string>
+    <string name="activity_app_update_data">数据上传</string>
+    <string name="activity_app_image">图片浏览</string>
+    <string name="activity_app_pline_mytask">任务线路</string>
+    <string name="activity_app_patrol_record">巡检记录</string>
+    <string name="activity_app_update_pline">数据上传_线路</string>
+    <string name="activity_app_update_">数据上传_线路</string>
+    <!--图片浏览器的页码显示器-->
+    <string name="viewpager_indicator">%1$d/%2$d</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--地图状态的toolbar名称-->
+    <string name="name_tool_bar_null_opt">PMap易巡</string>
+    <string name="name_tool_bar_measure">地图量测</string>
+    <string name="name_tool_bar_edit">数据采集</string>
+    <string name="name_tool_bar_select_poi">地图采点</string>
+    <string name="name_tool_bar_route_planning">路径规划</string>
+    <string name="name_tool_bar_local_data">本地数据显示</string>
+    <string name="name_tool_bar_data_geometry">图形显示</string>
+
+    <!--mapEdit状态下bottombar按钮名称-->
+    <string name="name_bottom_typeswitch">点</string>
+    <string name="name_bottom_addvex">增加</string>
+    <string name="name_bottom_deletevex">后退</string>
+    <string name="name_bottom_more">更多</string>
+    <string name="name_bottom_delete">删除</string>
+    <string name="name_bottom_measure_typeswitch">长度测量</string>
+
+
+    巡查下线路列表底部工具条
+    <string name="name_bottom_patrol_pline_select">全部选中</string>
+    <string name="name_bottom_patrol_pline_cancel">全部取消</string>
+    <string name="name_bottom_patrol_pline_task">设定任务</string>
+    <string name="name_bottom_patrol_pline_exit">退出</string>
+
+    <string name="name_bottom_patrol_pline_delete">删除线路</string>
+
+    <string name="name_bottom_mydata_pline_inputmap">导入地图</string>
+    <string name="name_bottom_mydata_pline_inputdatabase">导入数据库</string>
+
+    <string name="name_img_btn_photo">照片浏览</string>
+    <string name="name_img_btn_map">地图定位</string>
+    <string name="name_img_btn_share">分享好友</string>
+    <string name="name_img_btn_delete">删除信息</string>
+
+    <string name="name_img_btn_powerline">线路</string>
+    <string name="name_img_btn_channel">通道</string>
+    <string name="name_img_btn_mytask">我的任务</string>
+
+
+    <string name="name_img_btn_mylocation">我的位置</string>
+    <string name="name_img_btn_maplocation">地图选点</string>
+
+    <!--地图主界面底部工具条-->
+    <string name="name_img_btn_navi">路径</string>
+    <string name="name_img_btn_tools">工具</string>
+    <string name="name_img_btn_edit">编辑</string>
+    <string name="name_img_btn_patrol">巡检</string>
+
+    <!--导航语音-->
+    <string name="preference_default_tts_role">xiaoyan</string>
+    <string name="preference_key_tts_speed">tts_speed</string>
+    <string name="preference_title_tts_speed">语速</string>
+    <string name="preference_default_tts_speed">50</string>
+    <string name="preference_dialog_title_tts_speed">选择语速</string>
+    <string name="preference_key_tts_volume">tts_volume</string>
+    <string name="preference_title_tts_volume">音量</string>
+    <string name="preference_default_tts_volume">50</string>
+    <string name="preference_dialog_title_tts_volume">选择音量</string>
+    <string name="preference_key_tts_pitch">tts_pitch</string>
+    <string name="preference_title_tts_pitch">语调</string>
+    <string name="preference_default_tts_pitch">50</string>
+    <string name="intell_bd_title">智能播报</string>
+
+    <string name="start_title">示例代码</string>
+    <string name="base_function">基本功能</string>
+    <string name="hud_title">HUD显示</string>
+    <string name="extend_title">扩展功能</string>
+    <string name="extend_navi_navi">自定义导航</string>
+
+    <string name="navibar_title">路径规划</string>
+    <string name="navi_car">驾车</string>
+    <string name="navi_foot">步行</string>
+    <string name="start_hud_navi">HUD显示</string>
+    <string name="complex_function">综合展示</string>
+
+
+    <string name="navi_empty_car">"驾   车"</string>
+    <string name="navi_empty_foot">"步   行"</string>
+    <string name="navi_start">"起    点"</string>
+    <string name="navi_middle">途经点</string>
+    <string name="navi_end">"终    点"</string>
+    <string name="navi_strategy">"策    略"</string>
+    <string name="navi_route">路径规划</string>
+    <string name="navi_navi">模拟导航</string>
+    <string name="start_navi_navi">实时导航</string>
+    <string name="navi_strategy_speed">速度最快</string>
+    <string name="navi_strategy_cost">避免收费</string>
+    <string name="navi_strategy_distance">距离最短</string>
+    <string name="navi_strategy_nohighway">不走高速快速路</string>
+    <string name="navi_strategy_timenojam">时间最短且躲避拥堵</string>
+    <string name="navi_strategy_costnojam">避免收费且躲避拥堵</string>
+
+    <string name="theme_blue">经典蓝</string>
+    <string name="theme_pink">可爱粉</string>
+    <string name="theme_white">简约白</string>
+
+    <string name="setting">设置</string>
+    <string name="day">白天</string>
+    <string name="night">夜间</string>
+    <string name="yes">"  是  "</string>
+    <string name="no">"  否  "</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+    <string name="daynightmode">"昼夜模式    "</string>
+    <string name="deviationrecalculation">"偏航重算    "</string>
+    <string name="jamrecalculation">"拥堵重算    "</string>
+    <string name="trafficbroadcast">"交通播报    "</string>
+    <string name="camerabroadcast">摄像头播报</string>
+    <string name="screenon">"屏幕常亮    "</string>
+    <string name="routeshow">线路展示</string>
+    <string name="tapmap">点击地图设置</string>
+    <string name="starttapmap">我的位置（可点击地图设置）</string>
+    <string name="walkdescription">步行状态不可用</string>
+    <string name="routeinfo">全程   --公里/--分钟    收费 --元</string>
+    <string name="routeinfo_1">全程 </string>
+    <string name="routeinfo_2">公里/</string>
+    <string name="routeinfo_3">"分钟    收费"</string>
+    <string name="routeinfo_4">元</string>
+    <string name="routeinfo_default">--</string>
+    <string name="app_id">输入您讯飞的appid</string>
+    <string name="mypoistion">我的位置</string>
+    <string name="mappoistion">地图点选</string>
+    <string name="positioninfo">位置信息</string>
+
+    <string-array name="preference_values_tts_role">z
+        <item>xiaoyan</item>
+        <item>xiaoyu</item>
+        <item>vixy</item>
+        <item>vixq</item>
+        <item>vixf</item>
+        <item>vixm</item>
+        <item>vixl</item>
+        <item>vixr</item>
+        <item>vixyun</item>
+        <item>vixk</item>
+        <item>vixqa</item>
+        <item>vixying</item>
+        <item>vixx</item>
+        <item>vinn</item>
+        <item>vils</item>
+    </string-array>
+    <string name="title_activity_login2">用户登录</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_username">用户名称</string>
+    <string name="prompt_password">用户密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_in_short">登录</string>
+    <string name="error_invalid_email">邮箱不可用</string>
+    <string name="error_invalid_password">密码填写不正确</string>
+    <string name="error_incorrect_password">密码不正确</string>
+    <string name="error_field_required">必填字段</string>
+    <string name="fail_login">登录错误，请检查用户名和密码填写是否正确！</string>
+    <string name="error_login">登录错误，请检查网络连接是否正常！</string>
+    <string name="lock_login">用户被锁定，请联系管理员进行解锁处理！</string>
+    <string name="success_login">登录成功！</string>
+    <string name="permission_rationale">""</string>
+
+
+
+
+</resources>

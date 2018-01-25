@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/action_history"
+        android:orderInCategory="100"
+        android:title="历史信息"
+        app:showAsAction="withText|never" />
+    <item
+        android:id="@+id/action_solver"
+        android:orderInCategory="100"
+        android:title="历史缺陷隐患信息"
+        app:showAsAction="withText|never" />
+
+</menu>
