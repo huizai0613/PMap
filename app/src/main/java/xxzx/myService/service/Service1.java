@@ -11,9 +11,13 @@ import android.widget.Toast;
 
 import com.amap.api.maps.LocationSource;
 
+import java.util.Properties;
+
+import xxzx.Config.PropertiesUtil;
 import xxzx.activity.StrongService;
 import xxzx.myBdLocation.MyGdLocationClass;
 import xxzx.myService.utils.Utils;
+import xxzx.publicClass.MySingleClass;
 
 
 /**
@@ -21,7 +25,7 @@ import xxzx.myService.utils.Utils;
  *
  * @author henry
  */
-public class Service1 extends Service implements LocationSource.OnLocationChangedListener,LocationSource
+public class Service1 extends Service implements LocationSource.OnLocationChangedListener, LocationSource
 {
     private Handler handler = new Handler()
     {
@@ -87,6 +91,16 @@ public class Service1 extends Service implements LocationSource.OnLocationChange
         Toast.makeText(Service1.this, "易巡 Service1 正在启动...", Toast.LENGTH_SHORT)
                 .show();
         startService2();
+        MySingleClass mySingleClass = MySingleClass.getInstance();
+        try {
+            //获取配置文件
+            Properties properties = PropertiesUtil.loadConfig(getResources().getAssets().open("config.properties"));
+            //记录配置文件
+            mySingleClass.setProperties(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         if (myGdLocationClass == null) {
             myGdLocationClass = new MyGdLocationClass(getApplication(), false);
             myGdLocationClass.mListener = Service1.this;

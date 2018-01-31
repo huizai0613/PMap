@@ -2,6 +2,7 @@ package xxzx.myBdLocation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -166,25 +167,25 @@ public class MyGdLocationClass implements AMapLocationListener
                     amap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), 11));
                     isfirstLocation = false;
                 }
+
+                String result = GDLocationUtils.getLocationStr(loc);
+                Log.e("USER", "定位上传开始");
+                //如果当前没有登录，退出以下操作
+
+                SharedPreferences pref = mContext.getSharedPreferences("data", mContext.MODE_MULTI_PROCESS);
+
+                if (!pref.getBoolean("LOGINED", false)) {
+                    Log.e("USER", "未登录");
+                    return;
+                }
+                //将定位信息保存
+                mySingleClass.setMyGdLocation(loc);
+
+                double[] doubles = GPSUtil.gcj02_To_Bd09(loc.getLatitude(), loc.getLongitude());
+
+                //写GPS文件
+                writeGpsPoints(doubles[1] + "," + doubles[0] + ";");
                 if (!isMap) {
-                    String result = GDLocationUtils.getLocationStr(loc);
-
-                    //如果当前没有登录，退出以下操作
-                    if (mySingleClass.getUser() == null) {
-                        return;
-                    }
-
-                    if (!mySingleClass.getUser().getLoginSuccess()) {
-                        return;
-                    }
-
-                    //将定位信息保存
-                    mySingleClass.setMyGdLocation(loc);
-
-                    double[] doubles = GPSUtil.gcj02_To_Bd09(loc.getLatitude(), loc.getLongitude());
-
-                    //写GPS文件
-                    writeGpsPoints(doubles[1] + "," + doubles[0] + ";");
                     //设置|| GpsBeatTimeCount == 0,一开始就上传心跳数据
                     if (GpsBeatTimeCount == GPSBEATTIME || GpsBeatTimeCount == 0) {
                         GpsBeatTimeCount = 0;//重新计数
@@ -193,7 +194,7 @@ public class MyGdLocationClass implements AMapLocationListener
 
                         //转换坐标为百度地图
                         runnable.setData(String.valueOf(doubles[1]), String.valueOf(doubles[0]));
-
+                        Log.e("USER", "定位上传开始");
                         new Thread(runnable).start();
                     }
                     //GPS计数
@@ -217,6 +218,7 @@ public class MyGdLocationClass implements AMapLocationListener
     /**
      * 写GPS点数据,每次打开GPS记录开关都生成一个GPS点文件
      */
+
     private void writeGpsPoints(String pointStr)
     {
         try {
@@ -260,16 +262,18 @@ public class MyGdLocationClass implements AMapLocationListener
         {
             // TODO Auto-generated method stub
             MySingleClass mySingleClass = MySingleClass.getInstance();
+
             Properties properties = mySingleClass.getProperties();
             try {
-                if (mySingleClass.getUser() != null) {
+
+                if (mContext.getSharedPreferences("data", mContext.MODE_MULTI_PROCESS).getBoolean("LOGINED", false)) {
                     String url = properties.get("url_gps_breat2").toString();
 
                     String poststring = properties.get("url_gps_breat2_poststring").toString();
-                    poststring = String.format(poststring, mySingleClass.getUser().getmName(), this.x, this.y);
+                    poststring = String.format(poststring, mContext.getSharedPreferences("data", mContext.MODE_MULTI_PROCESS).getString("USERNAME", ""), this.x, this.y);
 
                     String result = MyHttpRequst.getHttpPostRequst2(url, poststring);
-
+                    Log.e("USER", "定位上传结果：" + result);
                     Message msg = new Message();
                     msg.what = 10000;
                     msg.obj = url + poststring + ";" + result;

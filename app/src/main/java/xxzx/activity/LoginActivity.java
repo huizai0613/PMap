@@ -1,24 +1,20 @@
 package xxzx.activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -31,29 +27,23 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import xxzx.activity.PublicBaseActivity.BaseToolBarActivity;
-import xxzx.login.HttpRequestResult;
 import xxzx.login.LoginFileUtils;
-import xxzx.login.ModifyPswDlgFragment;
 import xxzx.login.User;
 import xxzx.login.UserLoginTask;
-
 import xxzx.publicClass.LoadingDialog;
-import xxzx.publicClass.MyHttpRequst;
 import xxzx.publicClass.MySingleClass;
-import xxzx.publicClass.ToastUtil;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseToolBarActivity implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends BaseToolBarActivity implements LoaderCallbacks<Cursor>
+{
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -71,10 +61,11 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
     private CheckBox cb_remPwd;
     private CheckBox cb_autoLogin;
     private User user;
-    private LoadingDialog loadingDialog=null;
+    private LoadingDialog loadingDialog = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
@@ -87,15 +78,17 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
         this.loadingDialog = new LoadingDialog(this);
 
         Button btn_sign = (Button) findViewById(R.id.name_sign_in_button);
-        btn_sign.setOnClickListener(new OnClickListener() {
+        btn_sign.setOnClickListener(new OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 attemptLogin();
             }
         });
 
-        cb_remPwd= (CheckBox)findViewById(R.id.cb_remPwd);
-        cb_autoLogin= (CheckBox)findViewById(R.id.cb_autoLogin);
+        cb_remPwd = (CheckBox) findViewById(R.id.cb_remPwd);
+        cb_autoLogin = (CheckBox) findViewById(R.id.cb_autoLogin);
 
         //工具栏上的箭头
         getSupportActionBar().setDisplayShowTitleEnabled(true);
@@ -108,36 +101,42 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
     }
 
     @Override
-    public void onCreateCustomToolBar(Toolbar toolbar) {
+    public void onCreateCustomToolBar(Toolbar toolbar)
+    {
         super.onCreateCustomToolBar(toolbar);
 
     }
 
 
-    private void initData(){
+    private void initData()
+    {
         this.user = MySingleClass.getInstance().getUser();
-        if(this.user!=null){
-            if(this.user.getmRemPwd()){
+        if (this.user != null) {
+            if (this.user.getmRemPwd()) {
                 cb_remPwd.setChecked(true);
                 mUsernameView.setText(user.getmName());
                 mPasswordView.setText(user.getmPwd());
             }
-            if(user.getmAutoLogin()){
+            if (user.getmAutoLogin()) {
                 cb_autoLogin.setChecked(true);
             }
         }
 
-        cb_remPwd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cb_remPwd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
                 user.setmRemPwd(cb_remPwd.isChecked());
                 LoginFileUtils.writeLoginJsonFile(user);
             }
         });
 
-        cb_autoLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cb_autoLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
                 user.setmAutoLogin(cb_autoLogin.isChecked());
                 LoginFileUtils.writeLoginJsonFile(user);
             }
@@ -145,7 +144,8 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
         // 点击返回图标事件
         if (id == android.R.id.home) {
@@ -154,7 +154,8 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
         return super.onOptionsItemSelected(item);
     }
 
-    private void populateAutoComplete() {
+    private void populateAutoComplete()
+    {
         if (!mayRequestContacts()) {
             return;
         }
@@ -162,7 +163,8 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
         getLoaderManager().initLoader(0, null, this);
     }
 
-    private boolean mayRequestContacts() {
+    private boolean mayRequestContacts()
+    {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
         }
@@ -171,10 +173,12 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
             Snackbar.make(mUsernameView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(android.R.string.ok, new View.OnClickListener() {
+                    .setAction(android.R.string.ok, new View.OnClickListener()
+                    {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
-                        public void onClick(View v) {
+                        public void onClick(View v)
+                        {
                             requestPermissions(new String[]{READ_CONTACTS}, REQUEST_READ_CONTACTS);
                         }
                     });
@@ -189,7 +193,8 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+                                           @NonNull int[] grantResults)
+    {
         if (requestCode == REQUEST_READ_CONTACTS) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 populateAutoComplete();
@@ -203,7 +208,8 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
-    private void attemptLogin() {
+    private void attemptLogin()
+    {
         if (mAuthTask != null) {
             return;
         }
@@ -220,7 +226,7 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password) ) {
+        if (TextUtils.isEmpty(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -250,48 +256,59 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
 
             this.mAuthTask = new UserLoginTask();
             this.mAuthTask.setUser(this.user, LoginActivity.this);
-            this.mAuthTask.setOnCompleted(new UserLoginTask.ICoallBack() {
-                @Override
-                public void onCompleted(int result) {
-                    showProgress(false);
-                    mAuthTask=null;
-                    if (result == HttpRequestResult.SUCCESS) {
-
-                        loginSuccess(user);
-
-                    }else if(result == HttpRequestResult.SUCCESS_FIRSTLOGIN){//修改密码
-
-                        ModifyPswDlgFragment modifyPswDlgFragment = new ModifyPswDlgFragment();
-                        modifyPswDlgFragment.setUser(user);
-                        modifyPswDlgFragment.show(getFragmentManager(),"ModifyPswDlgFragment");
-                        modifyPswDlgFragment.setOnCompleted(new ModifyPswDlgFragment.ICoallBack() {
-                            @Override
-                            public void onCompleted(boolean result,User user) {
-                                if(result){
-                                    loginSuccess(user);
-                                }
-                            }
-                        });
-
-                    }else{
-                        user.setLoginSuccess(false);
-                    }
-                }
-            });
-
-            this.mAuthTask.execute((Void) null);
+            loginSuccess(user);
+//            this.mAuthTask.setOnCompleted(new UserLoginTask.ICoallBack()
+//            {
+//                @Override
+//                public void onCompleted(int result)
+//                {
+//                    showProgress(false);
+//                    mAuthTask = null;
+//                    if (result == HttpRequestResult.SUCCESS) {
+//
+//                        loginSuccess(user);
+//
+//                    } else if (result == HttpRequestResult.SUCCESS_FIRSTLOGIN) {//修改密码
+//                        loginSuccess(user);
+//                        ModifyPswDlgFragment modifyPswDlgFragment = new ModifyPswDlgFragment();
+//                        modifyPswDlgFragment.setUser(user);
+//                        modifyPswDlgFragment.show(getFragmentManager(), "ModifyPswDlgFragment");
+//                        modifyPswDlgFragment.setOnCompleted(new ModifyPswDlgFragment.ICoallBack()
+//                        {
+//                            @Override
+//                            public void onCompleted(boolean result, User user)
+//                            {
+//                                if (result) {
+//                                    loginSuccess(user);
+//                                }
+//                            }
+//                        });
+//
+//                    } else {
+//                        user.setLoginSuccess(false);
+//                    }
+//                }
+//            });
+//
+//            this.mAuthTask.execute((Void) null);
         }
     }
 
 
     /**
      * 登陆成功后的操作
+     *
      * @param user
      */
-    private void loginSuccess(User user){
+    private void loginSuccess(User user)
+    {
         //设置登录成功
         user.setLoginSuccess(true);
-
+        SharedPreferences pref = getSharedPreferences("data", MODE_MULTI_PROCESS);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("USERNAME", user.getmName());
+        editor.putBoolean("LOGINED", true);
+        editor.commit();
         MySingleClass.getInstance().setUser(user);
         //写入文件
         LoginFileUtils.writeLoginJsonFile(user);
@@ -306,16 +323,18 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
      * Shows the progress UI and hides the login form.
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        if(show) {
+    private void showProgress(final boolean show)
+    {
+        if (show) {
             this.loadingDialog.show();
-        }else{
+        } else {
             this.loadingDialog.dismiss();
         }
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle)
+    {
         return new CursorLoader(this,
                 // Retrieve data rows for the device user's 'profile' contact.
                 Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
@@ -332,7 +351,8 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor)
+    {
         List<String> emails = new ArrayList<>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -344,11 +364,13 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+    public void onLoaderReset(Loader<Cursor> cursorLoader)
+    {
 
     }
 
-    private interface ProfileQuery {
+    private interface ProfileQuery
+    {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
                 ContactsContract.CommonDataKinds.Email.IS_PRIMARY,
@@ -359,7 +381,8 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
     }
 
 
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
+    private void addEmailsToAutoComplete(List<String> emailAddressCollection)
+    {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(LoginActivity.this,
