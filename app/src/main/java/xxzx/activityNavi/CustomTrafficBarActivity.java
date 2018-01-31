@@ -11,7 +11,6 @@ import com.amap.api.navi.model.AMapTrafficStatus;
 import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.view.CustomTmcView;
 
-
 import java.util.List;
 
 import xxzx.activity.R;
@@ -25,7 +24,8 @@ import xxzx.activity.R;
  * 类说明：
  */
 
-public class CustomTrafficBarActivity extends BaseActivity {
+public class CustomTrafficBarActivity extends BaseActivity
+{
 
     private CustomTmcView myCustomTrafficBar;
     private AMapNaviPath naviPath;
@@ -80,8 +80,8 @@ public class CustomTrafficBarActivity extends BaseActivity {
     }
 
     @Override
-    public void onCalculateRouteSuccess(int[] ints) {
-        super.onCalculateRouteSuccess(ints);
+    public void onCalculateRouteSuccess() {
+        super.onCalculateRouteSuccess();
 
         if (mAMapNavi != null) {
             naviPath = mAMapNavi.getNaviPath();

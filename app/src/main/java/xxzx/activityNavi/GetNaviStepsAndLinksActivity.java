@@ -10,7 +10,6 @@ import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.AMapNaviStep;
 import com.amap.api.navi.model.NaviLatLng;
 
-
 import java.util.List;
 
 import xxzx.activity.R;
@@ -24,7 +23,8 @@ import xxzx.activity.R;
  * 类说明：
  */
 
-public class GetNaviStepsAndLinksActivity extends BaseActivity {
+public class GetNaviStepsAndLinksActivity extends BaseActivity
+{
 
 
     private AMapNaviPath mAMapNaviPath;
@@ -50,8 +50,8 @@ public class GetNaviStepsAndLinksActivity extends BaseActivity {
 
 
     @Override
-    public void onCalculateRouteSuccess(int[] ints) {
-        super.onCalculateRouteSuccess(ints);
+    public void onCalculateRouteSuccess() {
+        super.onCalculateRouteSuccess();
 
         //概览
         guides = mAMapNavi.getNaviGuideList();

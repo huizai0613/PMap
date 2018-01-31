@@ -12,14 +12,11 @@ import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.enums.PathPlanningStrategy;
 import com.amap.api.navi.model.AMapLaneInfo;
-import com.amap.api.navi.model.AMapModelCross;
-import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
-import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
@@ -42,7 +39,8 @@ import xxzx.activity.R;
  * 类说明：
  */
 
-public class MultipleRoutePlanningActivity extends Activity implements AMapNaviListener {
+public class MultipleRoutePlanningActivity extends Activity implements AMapNaviListener
+{
 
     NaviLatLng endLatlng = new NaviLatLng(39.955846, 116.352765);
     NaviLatLng startLatlng = new NaviLatLng(39.925041, 116.437901);
@@ -126,6 +124,31 @@ public class MultipleRoutePlanningActivity extends Activity implements AMapNaviL
 
     private boolean calculateSuccess;
 
+    @Override
+    public void onCalculateMultipleRoutesSuccess(int[] routeIds) {
+
+        //当且仅当，使用策略AMapNavi.DrivingMultipleRoutes时回调
+        //单路径算路依然回调onCalculateRouteSuccess，不回调这个
+
+
+        //你会获取路径ID数组
+        this.routeIds = routeIds;
+        for (int i = 0; i < routeIds.length; i++) {
+            //你可以通过对应的路径ID获得一条道路路径AMapNaviPath
+            AMapNaviPath path = (aMapNavi.getNaviPaths()).get(routeIds[i]);
+
+            //你可以通过这个AMapNaviPath生成一个RouteOverLay用于加在地图上
+            RouteOverLay routeOverLay = new RouteOverLay(amap, path, this);
+            routeOverLay.setTrafficLine(true);
+            routeOverLay.addToMap();
+
+            routeOverlays.put(routeIds[i], routeOverLay);
+        }
+
+        routeOverlays.get(routeIds[0]).zoomToSpan();
+        calculateSuccess = true;
+    }
+
 
     public void changeRoute(View view) {
         if (!calculateSuccess) {
@@ -192,12 +215,6 @@ public class MultipleRoutePlanningActivity extends Activity implements AMapNaviL
     }
 
     @Override
-    public void onGetNavigationText(String s)
-    {
-
-    }
-
-    @Override
     public void onEndEmulatorNavi() {
 
     }
@@ -207,6 +224,10 @@ public class MultipleRoutePlanningActivity extends Activity implements AMapNaviL
 
     }
 
+    @Override
+    public void onCalculateRouteSuccess() {
+
+    }
 
     @Override
     public void onCalculateRouteFailure(int errorInfo) {
@@ -239,18 +260,6 @@ public class MultipleRoutePlanningActivity extends Activity implements AMapNaviL
     }
 
     @Override
-    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos)
-    {
-
-    }
-
-    @Override
-    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos)
-    {
-
-    }
-
-    @Override
     public void onNaviInfoUpdate(NaviInfo naviinfo) {
 
     }
@@ -276,18 +285,6 @@ public class MultipleRoutePlanningActivity extends Activity implements AMapNaviL
     }
 
     @Override
-    public void showModeCross(AMapModelCross aMapModelCross)
-    {
-
-    }
-
-    @Override
-    public void hideModeCross()
-    {
-
-    }
-
-    @Override
     public void showLaneInfo(AMapLaneInfo[] laneInfos, byte[] laneBackgroundInfo, byte[] laneRecommendedInfo) {
 
     }
@@ -298,34 +295,7 @@ public class MultipleRoutePlanningActivity extends Activity implements AMapNaviL
     }
 
     @Override
-    public void onCalculateRouteSuccess(int[] ints)
-    {
-        //你会获取路径ID数组
-        this.routeIds = routeIds;
-        for (int i = 0; i < routeIds.length; i++) {
-            //你可以通过对应的路径ID获得一条道路路径AMapNaviPath
-            AMapNaviPath path = (aMapNavi.getNaviPaths()).get(routeIds[i]);
-
-            //你可以通过这个AMapNaviPath生成一个RouteOverLay用于加在地图上
-            RouteOverLay routeOverLay = new RouteOverLay(amap, path, this);
-            routeOverLay.setTrafficLine(true);
-            routeOverLay.addToMap();
-
-            routeOverlays.put(routeIds[i], routeOverLay);
-        }
-
-        routeOverlays.get(routeIds[0]).zoomToSpan();
-        calculateSuccess = true;
-    }
-
-    @Override
     public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo){
-
-    }
-
-    @Override
-    public void onPlayRing(int i)
-    {
 
     }
 

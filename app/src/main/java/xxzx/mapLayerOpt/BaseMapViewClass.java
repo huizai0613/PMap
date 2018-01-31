@@ -229,8 +229,6 @@ public class BaseMapViewClass extends RelativeLayout
         myLocationStyle.strokeColor(Color.argb(255, 1, 144, 251));// 设置圆形的边框颜色
         myLocationStyle.radiusFillColor(Color.argb(50, 1, 144, 251));// 设置圆形的填充颜色
         myLocationStyle.strokeWidth(0);// 设置圆形的边框粗细
-        myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
-        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）默认执行此种模式。
         return myLocationStyle;
     }
 
@@ -445,7 +443,7 @@ public class BaseMapViewClass extends RelativeLayout
     public void onDestroy()
     {
         mMapView.onDestroy();
-        if(myGdLocationClass != null) {
+        if (myGdLocationClass != null) {
             myGdLocationClass.onDestroy();
         }
     }
@@ -457,8 +455,8 @@ public class BaseMapViewClass extends RelativeLayout
      */
     public void activate(LocationSource.OnLocationChangedListener listener)
     {
-        if(myGdLocationClass==null){
-            myGdLocationClass=new MyGdLocationClass(mContext,true);
+        if (myGdLocationClass == null) {
+            myGdLocationClass = new MyGdLocationClass(mContext, true);
             myGdLocationClass.mListener = listener;
             myGdLocationClass.start();
         }

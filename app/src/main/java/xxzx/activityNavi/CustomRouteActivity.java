@@ -12,7 +12,6 @@ import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.NaviLatLng;
 import com.amap.api.navi.view.RouteOverLay;
 
-
 import java.util.ArrayList;
 
 import xxzx.activity.R;
@@ -35,8 +34,7 @@ public class CustomRouteActivity extends BaseActivity implements AMapNaviListene
     NaviLatLng wayPoint3 = new NaviLatLng(39.965041, 116.447901);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mWayPointList = new ArrayList<NaviLatLng>();
@@ -50,8 +48,7 @@ public class CustomRouteActivity extends BaseActivity implements AMapNaviListene
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         mWayPointList.add(wayPoint);
         mWayPointList.add(wayPoint1);
         mWayPointList.add(wayPoint2);
@@ -60,10 +57,9 @@ public class CustomRouteActivity extends BaseActivity implements AMapNaviListene
         super.onResume();
     }
 
+
     @Override
-    public void onCalculateRouteSuccess(int[] ints)
-    {
-        super.onCalculateRouteSuccess(ints);
+    public void onCalculateRouteSuccess() {
 //        如果根据获取的导航路线来自定义绘制
         RouteOverLay routeOverlay = new RouteOverLay(mAMapNaviView.getMap(), mAMapNavi.getNaviPath(), this);
         routeOverlay.setStartPointBitmap(BitmapFactory.decodeResource(this.getResources(), R.mipmap.r1));
@@ -87,10 +83,8 @@ public class CustomRouteActivity extends BaseActivity implements AMapNaviListene
         mAMapNavi.startNavi(AMapNavi.EmulatorNaviMode);
     }
 
-
     @Override
-    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo)
-    {
+    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo){
 
     }
 

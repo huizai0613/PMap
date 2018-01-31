@@ -14,20 +14,16 @@ import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.enums.PathPlanningStrategy;
 import com.amap.api.navi.model.AMapLaneInfo;
-import com.amap.api.navi.model.AMapModelCross;
-import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviPath;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
-import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.model.NaviLatLng;
 import com.amap.api.navi.view.RouteOverLay;
-
 import com.autonavi.tbt.TrafficFacilityInfo;
 
 import java.util.ArrayList;
@@ -43,8 +39,7 @@ import xxzx.activity.R;
  * 类说明：
  */
 
-public class RoutePlanningActivity extends Activity implements AMapNaviListener, View.OnClickListener
-{
+public class RoutePlanningActivity extends Activity implements AMapNaviListener, View.OnClickListener {
     // 起点、终点坐标显示
     private EditText startInput;
     private EditText endInput;
@@ -69,8 +64,7 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
     private AMapNavi aMapNavi;
 
 
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ttsManager = TTSController.getInstance(this);
@@ -87,8 +81,7 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
     }
 
     // 初始化View
-    private void initView(Bundle savedInstanceState)
-    {
+    private void initView(Bundle savedInstanceState) {
 
         startInput = (EditText) findViewById(R.id.start_position_textview);
         endInput = (EditText) findViewById(R.id.end_position_textview);
@@ -108,12 +101,11 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
         mMapView = (MapView) findViewById(R.id.mapview);
         mMapView.onCreate(savedInstanceState);
         mAMap = mMapView.getMap();
-        mRouteOverLay = new RouteOverLay(mAMap, null, this);
+        mRouteOverLay = new RouteOverLay(mAMap, null);
     }
 
     //计算驾车路线
-    private void calculateDriveRoute()
-    {
+    private void calculateDriveRoute() {
         mNaviStart = parseEditText(startInput.getText().toString());
         mNaviEnd = parseEditText(endInput.getText().toString());
         mStartPoints.clear();
@@ -128,8 +120,7 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
         }
     }
 
-    private NaviLatLng parseEditText(String text)
-    {
+    private NaviLatLng parseEditText(String text) {
         try {
             double latD = Double.parseDouble(text.split(",")[0]);
             double lonD = Double.parseDouble(text.split(",")[1]);
@@ -147,8 +138,7 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
     }
 
     //计算步行路线
-    private void calculateFootRoute()
-    {
+    private void calculateFootRoute() {
         mNaviStart = parseEditText(startInput.getText().toString());
         mNaviEnd = parseEditText(endInput.getText().toString());
         boolean isSuccess = aMapNavi.calculateWalkRoute(mNaviStart, mNaviEnd);
@@ -157,15 +147,13 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
         }
     }
 
-    private void showToast(String message)
-    {
+    private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     //-------------------------Button点击事件和返回键监听事件---------------------------------
     @Override
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
         switch (v.getId()) {
             case R.id.car_navi_route:
                 calculateDriveRoute();
@@ -178,8 +166,7 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             finish();
         }
@@ -188,194 +175,22 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
 
     //--------------------导航监听回调事件-----------------------------
     @Override
-    public void onArriveDestination()
-    {
+    public void onArriveDestination() {
 
     }
 
     @Override
-    public void onArrivedWayPoint(int arg0)
-    {
+    public void onArrivedWayPoint(int arg0) {
 
     }
 
     @Override
-    public void onCalculateRouteFailure(int arg0)
-    {
+    public void onCalculateRouteFailure(int arg0) {
         showToast("路径规划出错" + arg0);
     }
 
-
     @Override
-    public void onEndEmulatorNavi()
-    {
-
-    }
-
-    @Override
-    public void onGetNavigationText(int arg0, String arg1)
-    {
-
-    }
-
-    @Override
-    public void onGetNavigationText(String s)
-    {
-
-    }
-
-    @Override
-    public void onGpsOpenStatus(boolean arg0)
-    {
-
-    }
-
-    @Override
-    public void onInitNaviFailure()
-    {
-
-    }
-
-    @Override
-    public void onInitNaviSuccess()
-    {
-
-    }
-
-    @Override
-    public void onLocationChange(AMapNaviLocation arg0)
-    {
-
-    }
-
-    @Override
-    public void onNaviInfoUpdated(AMapNaviInfo arg0)
-    {
-
-    }
-
-    @Override
-    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos)
-    {
-
-    }
-
-    @Override
-    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos)
-    {
-
-    }
-
-    @Override
-    public void onReCalculateRouteForTrafficJam()
-    {
-
-    }
-
-    @Override
-    public void onReCalculateRouteForYaw()
-    {
-
-    }
-
-    @Override
-    public void onStartNavi(int arg0)
-    {
-
-    }
-
-    @Override
-    public void onTrafficStatusUpdate()
-    {
-
-    }
-
-//------------------生命周期重写函数---------------------------
-
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        mMapView.onResume();
-        mStartPoints.add(mNaviStart);
-        mEndPoints.add(mNaviEnd);
-
-    }
-
-    @Override
-    public void onPause()
-    {
-        super.onPause();
-        mMapView.onPause();
-
-    }
-
-    @Override
-    public void onDestroy()
-    {
-        super.onDestroy();
-        mMapView.onDestroy();
-        aMapNavi.destroy();
-        ttsManager.destroy();
-    }
-
-    @Override
-    public void onNaviInfoUpdate(NaviInfo arg0)
-    {
-
-    }
-
-    @Override
-    public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo)
-    {
-
-    }
-
-    @Override
-    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo aMapNaviTrafficFacilityInfo)
-    {
-
-    }
-
-    @Override
-    public void showCross(AMapNaviCross aMapNaviCross)
-    {
-
-    }
-
-    @Override
-    public void hideCross()
-    {
-
-    }
-
-    @Override
-    public void showModeCross(AMapModelCross aMapModelCross)
-    {
-
-    }
-
-    @Override
-    public void hideModeCross()
-    {
-
-    }
-
-    @Override
-    public void showLaneInfo(AMapLaneInfo[] aMapLaneInfos, byte[] bytes, byte[] bytes1)
-    {
-
-    }
-
-    @Override
-    public void hideLaneInfo()
-    {
-
-    }
-
-    @Override
-    public void onCalculateRouteSuccess(int[] ints)
-    {
+    public void onCalculateRouteSuccess() {
         AMapNaviPath naviPath = aMapNavi.getNaviPath();
         if (naviPath == null) {
             return;
@@ -385,34 +200,143 @@ public class RoutePlanningActivity extends Activity implements AMapNaviListener,
         mRouteOverLay.addToMap();
     }
 
-
     @Override
-    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo)
-    {
+    public void onEndEmulatorNavi() {
 
     }
 
     @Override
-    public void onPlayRing(int i)
-    {
+    public void onGetNavigationText(int arg0, String arg1) {
 
     }
 
     @Override
-    public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat)
-    {
+    public void onGpsOpenStatus(boolean arg0) {
 
     }
 
     @Override
-    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo[] aMapNaviTrafficFacilityInfo)
-    {
+    public void onInitNaviFailure() {
 
     }
 
     @Override
-    public void notifyParallelRoad(int parallelRoadType)
-    {
+    public void onInitNaviSuccess() {
+
+    }
+
+    @Override
+    public void onLocationChange(AMapNaviLocation arg0) {
+
+    }
+
+    @Override
+    public void onNaviInfoUpdated(AMapNaviInfo arg0) {
+
+    }
+
+    @Override
+    public void onReCalculateRouteForTrafficJam() {
+
+    }
+
+    @Override
+    public void onReCalculateRouteForYaw() {
+
+    }
+
+    @Override
+    public void onStartNavi(int arg0) {
+
+    }
+
+    @Override
+    public void onTrafficStatusUpdate() {
+
+    }
+
+//------------------生命周期重写函数---------------------------
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mMapView.onResume();
+        mStartPoints.add(mNaviStart);
+        mEndPoints.add(mNaviEnd);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mMapView.onPause();
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
+        aMapNavi.destroy();
+        ttsManager.destroy();
+    }
+
+    @Override
+    public void onNaviInfoUpdate(NaviInfo arg0) {
+
+    }
+
+    @Override
+    public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo) {
+
+    }
+
+    @Override
+    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo aMapNaviTrafficFacilityInfo) {
+
+    }
+
+    @Override
+    public void showCross(AMapNaviCross aMapNaviCross) {
+
+    }
+
+    @Override
+    public void hideCross() {
+
+    }
+
+    @Override
+    public void showLaneInfo(AMapLaneInfo[] aMapLaneInfos, byte[] bytes, byte[] bytes1) {
+
+    }
+
+    @Override
+    public void hideLaneInfo() {
+
+    }
+
+    @Override
+    public void onCalculateMultipleRoutesSuccess(int[] ints) {
+
+    }
+
+
+    @Override
+    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo){
+
+    }
+
+    @Override
+    public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat){
+
+    }
+    @Override
+    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo[] aMapNaviTrafficFacilityInfo){
+
+    }
+    @Override
+    public void notifyParallelRoad(int parallelRoadType){
 
     }
 

@@ -31,7 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import xxzx.activity.PublicBaseActivity.BaseToolBarActivity;
+import xxzx.login.HttpRequestResult;
 import xxzx.login.LoginFileUtils;
+import xxzx.login.ModifyPswDlgFragment;
 import xxzx.login.User;
 import xxzx.login.UserLoginTask;
 import xxzx.publicClass.LoadingDialog;
@@ -256,41 +258,40 @@ public class LoginActivity extends BaseToolBarActivity implements LoaderCallback
 
             this.mAuthTask = new UserLoginTask();
             this.mAuthTask.setUser(this.user, LoginActivity.this);
-            loginSuccess(user);
-//            this.mAuthTask.setOnCompleted(new UserLoginTask.ICoallBack()
-//            {
-//                @Override
-//                public void onCompleted(int result)
-//                {
-//                    showProgress(false);
-//                    mAuthTask = null;
-//                    if (result == HttpRequestResult.SUCCESS) {
-//
-//                        loginSuccess(user);
-//
-//                    } else if (result == HttpRequestResult.SUCCESS_FIRSTLOGIN) {//修改密码
-//                        loginSuccess(user);
-//                        ModifyPswDlgFragment modifyPswDlgFragment = new ModifyPswDlgFragment();
-//                        modifyPswDlgFragment.setUser(user);
-//                        modifyPswDlgFragment.show(getFragmentManager(), "ModifyPswDlgFragment");
-//                        modifyPswDlgFragment.setOnCompleted(new ModifyPswDlgFragment.ICoallBack()
-//                        {
-//                            @Override
-//                            public void onCompleted(boolean result, User user)
-//                            {
-//                                if (result) {
-//                                    loginSuccess(user);
-//                                }
-//                            }
-//                        });
-//
-//                    } else {
-//                        user.setLoginSuccess(false);
-//                    }
-//                }
-//            });
-//
-//            this.mAuthTask.execute((Void) null);
+            this.mAuthTask.setOnCompleted(new UserLoginTask.ICoallBack()
+            {
+                @Override
+                public void onCompleted(int result)
+                {
+                    showProgress(false);
+                    mAuthTask = null;
+                    if (result == HttpRequestResult.SUCCESS) {
+
+                        loginSuccess(user);
+
+                    } else if (result == HttpRequestResult.SUCCESS_FIRSTLOGIN) {//修改密码
+                        loginSuccess(user);
+                        ModifyPswDlgFragment modifyPswDlgFragment = new ModifyPswDlgFragment();
+                        modifyPswDlgFragment.setUser(user);
+                        modifyPswDlgFragment.show(getFragmentManager(), "ModifyPswDlgFragment");
+                        modifyPswDlgFragment.setOnCompleted(new ModifyPswDlgFragment.ICoallBack()
+                        {
+                            @Override
+                            public void onCompleted(boolean result, User user)
+                            {
+                                if (result) {
+                                    loginSuccess(user);
+                                }
+                            }
+                        });
+
+                    } else {
+                        user.setLoginSuccess(false);
+                    }
+                }
+            });
+
+            this.mAuthTask.execute((Void) null);
         }
     }
 

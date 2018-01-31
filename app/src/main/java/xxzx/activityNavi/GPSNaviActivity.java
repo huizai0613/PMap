@@ -18,7 +18,8 @@ import xxzx.activity.R;
  * 类说明：
  */
 
-public class GPSNaviActivity extends BaseActivity {
+public class GPSNaviActivity extends BaseActivity
+{
 
 
     @Override
@@ -48,7 +49,7 @@ public class GPSNaviActivity extends BaseActivity {
 
 
     @Override
-    public void onCalculateRouteSuccess(int[] ints) {
+    public void onCalculateRouteSuccess() {
         mAMapNavi.startNavi(AMapNavi.GPSNaviMode);
     }
 }

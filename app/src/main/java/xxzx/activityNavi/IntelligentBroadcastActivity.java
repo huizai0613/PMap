@@ -17,17 +17,13 @@ import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.enums.AimLessMode;
 import com.amap.api.navi.model.AMapLaneInfo;
-import com.amap.api.navi.model.AMapModelCross;
-import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
-import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
-
 import com.autonavi.tbt.TrafficFacilityInfo;
 
 import java.util.Timer;
@@ -45,7 +41,8 @@ import xxzx.activity.R;
  * 无须事先规划路线的智能播报
  */
 
-public class IntelligentBroadcastActivity extends Activity implements AMapNaviListener {
+public class IntelligentBroadcastActivity extends Activity implements AMapNaviListener
+{
 
 
     private MapView mapView;
@@ -239,12 +236,6 @@ public class IntelligentBroadcastActivity extends Activity implements AMapNaviLi
     }
 
     @Override
-    public void onGetNavigationText(String s)
-    {
-
-    }
-
-    @Override
     public void onEndEmulatorNavi() {
 
     }
@@ -254,6 +245,10 @@ public class IntelligentBroadcastActivity extends Activity implements AMapNaviLi
 
     }
 
+    @Override
+    public void onCalculateRouteSuccess() {
+
+    }
 
     @Override
     public void onCalculateRouteFailure(int i) {
@@ -286,18 +281,6 @@ public class IntelligentBroadcastActivity extends Activity implements AMapNaviLi
     }
 
     @Override
-    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos)
-    {
-
-    }
-
-    @Override
-    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos)
-    {
-
-    }
-
-    @Override
     public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo) {
     }
 
@@ -317,18 +300,6 @@ public class IntelligentBroadcastActivity extends Activity implements AMapNaviLi
     }
 
     @Override
-    public void showModeCross(AMapModelCross aMapModelCross)
-    {
-
-    }
-
-    @Override
-    public void hideModeCross()
-    {
-
-    }
-
-    @Override
     public void showLaneInfo(AMapLaneInfo[] aMapLaneInfos, byte[] bytes, byte[] bytes1) {
 
     }
@@ -339,11 +310,9 @@ public class IntelligentBroadcastActivity extends Activity implements AMapNaviLi
     }
 
     @Override
-    public void onCalculateRouteSuccess(int[] ints)
-    {
+    public void onCalculateMultipleRoutesSuccess(int[] ints) {
 
     }
-
 
     @Override
     public void onNaviInfoUpdate(NaviInfo naviinfo) {
@@ -351,12 +320,6 @@ public class IntelligentBroadcastActivity extends Activity implements AMapNaviLi
 
     @Override
     public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo){
-
-    }
-
-    @Override
-    public void onPlayRing(int i)
-    {
 
     }
 

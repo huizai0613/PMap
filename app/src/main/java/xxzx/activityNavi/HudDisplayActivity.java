@@ -10,18 +10,14 @@ import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.enums.PathPlanningStrategy;
 import com.amap.api.navi.model.AMapLaneInfo;
-import com.amap.api.navi.model.AMapModelCross;
-import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
-import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.model.NaviLatLng;
-
 import com.autonavi.tbt.TrafficFacilityInfo;
 
 import java.util.ArrayList;
@@ -37,7 +33,8 @@ import xxzx.activity.R;
  * 类说明：
  */
 
-public class HudDisplayActivity extends Activity implements AMapHudViewListener, AMapNaviListener {
+public class HudDisplayActivity extends Activity implements AMapHudViewListener, AMapNaviListener
+{
 
 
     private AMapHudView mAMapHudView;
@@ -151,12 +148,6 @@ public class HudDisplayActivity extends Activity implements AMapHudViewListener,
     }
 
     @Override
-    public void onGetNavigationText(String s)
-    {
-
-    }
-
-    @Override
     public void onEndEmulatorNavi() {
 
     }
@@ -166,6 +157,10 @@ public class HudDisplayActivity extends Activity implements AMapHudViewListener,
 
     }
 
+    @Override
+    public void onCalculateRouteSuccess() {
+        AMapNavi.getInstance(this).startNavi(AMapNavi.EmulatorNaviMode);
+    }
 
     @Override
     public void onCalculateRouteFailure(int i) {
@@ -198,18 +193,6 @@ public class HudDisplayActivity extends Activity implements AMapHudViewListener,
     }
 
     @Override
-    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos)
-    {
-
-    }
-
-    @Override
-    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos)
-    {
-
-    }
-
-    @Override
     public void onNaviInfoUpdate(NaviInfo naviInfo) {
 
     }
@@ -235,18 +218,6 @@ public class HudDisplayActivity extends Activity implements AMapHudViewListener,
     }
 
     @Override
-    public void showModeCross(AMapModelCross aMapModelCross)
-    {
-
-    }
-
-    @Override
-    public void hideModeCross()
-    {
-
-    }
-
-    @Override
     public void showLaneInfo(AMapLaneInfo[] aMapLaneInfos, byte[] bytes, byte[] bytes1) {
 
     }
@@ -257,21 +228,14 @@ public class HudDisplayActivity extends Activity implements AMapHudViewListener,
     }
 
     @Override
-    public void onCalculateRouteSuccess(int[] ints)
-    {
-        AMapNavi.getInstance(this).startNavi(AMapNavi.EmulatorNaviMode);
+    public void onCalculateMultipleRoutesSuccess(int[] ints) {
+
     }
 
 
 
     @Override
     public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo){
-
-    }
-
-    @Override
-    public void onPlayRing(int i)
-    {
 
     }
 

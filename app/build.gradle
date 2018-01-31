@@ -37,13 +37,14 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
     compile 'com.jpardogo.materialtabstrip:library:1.0.6'
-    compile files('libs/AMap_Location_V3.7.0_20171218.jar')
+    compile files('libs/AMap_Location_v2.3.0_20160112.jar')
     compile(name: 'vector-drawable-library', ext: 'aar')
     compile(name: 'material-design-library', ext: 'aar')
     compile(name: 'smarttablayout-library', ext: 'aar')
     compile files('libs/Msc.jar')
     compile files('libs/spatialite-android-library.jar')
-    compile files('libs/AMap3DMap_5.7.0_AMapNavi_5.6.0_AMapSearch_5.7.0_20180109.jar')
+    compile files('libs/AMap3DMap_3.3.1_AMapNavi_1.8.0_20160420.jar')
+    compile files('libs/AMap_Search_V2.8.0_20160105.jar')
     compile project(':mylibrary')
     compile files('libs/libammsdk.jar')
     compile files('libs/open_sdk_r5788_lite.jar')

@@ -11,13 +11,10 @@ import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
 import com.amap.api.navi.enums.PathPlanningStrategy;
 import com.amap.api.navi.model.AMapLaneInfo;
-import com.amap.api.navi.model.AMapModelCross;
-import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
-import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
@@ -36,7 +33,8 @@ import java.util.List;
  * 类说明：
  */
 
-public class BaseActivity extends Activity implements AMapNaviListener, AMapNaviViewListener {
+public class BaseActivity extends Activity implements AMapNaviListener, AMapNaviViewListener
+{
 
     AMapNaviView mAMapNaviView;
     AMapNavi mAMapNavi;
@@ -122,12 +120,6 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     }
 
     @Override
-    public void onPlayRing(int i)
-    {
-
-    }
-
-    @Override
     public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat){
 
     }
@@ -156,12 +148,6 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     }
 
     @Override
-    public void onGetNavigationText(String s)
-    {
-
-    }
-
-    @Override
     public void onEndEmulatorNavi() {
     }
 
@@ -169,6 +155,10 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     public void onArriveDestination() {
     }
 
+    @Override
+    public void onCalculateRouteSuccess() {
+        mAMapNavi.startNavi(AMapNavi.EmulatorNaviMode);
+    }
 
     @Override
     public void onCalculateRouteFailure(int errorInfo) {
@@ -229,18 +219,6 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     }
 
     @Override
-    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos)
-    {
-
-    }
-
-    @Override
-    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos)
-    {
-
-    }
-
-    @Override
     public void onNaviInfoUpdate(NaviInfo naviinfo) {
     }
 
@@ -263,18 +241,6 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     }
 
     @Override
-    public void showModeCross(AMapModelCross aMapModelCross)
-    {
-
-    }
-
-    @Override
-    public void hideModeCross()
-    {
-
-    }
-
-    @Override
     public void showLaneInfo(AMapLaneInfo[] laneInfos, byte[] laneBackgroundInfo, byte[] laneRecommendedInfo) {
 
     }
@@ -285,9 +251,8 @@ public class BaseActivity extends Activity implements AMapNaviListener, AMapNavi
     }
 
     @Override
-    public void onCalculateRouteSuccess(int[] ints)
-    {
-        mAMapNavi.startNavi(AMapNavi.EmulatorNaviMode);
+    public void onCalculateMultipleRoutesSuccess(int[] ints) {
+
     }
 
 

@@ -10,13 +10,10 @@ import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
 import com.amap.api.navi.model.AMapLaneInfo;
-import com.amap.api.navi.model.AMapModelCross;
-import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
 import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
-import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
@@ -49,8 +46,7 @@ public class GpsNaviActivity extends Activity implements AMapNaviListener, AMapN
     List<NaviLatLng> mWayPointList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_route_gps_navi);
@@ -60,44 +56,31 @@ public class GpsNaviActivity extends Activity implements AMapNaviListener, AMapN
     }
 
     @Override
-    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo)
-    {
+    public void updateAimlessModeCongestionInfo(AimLessModeCongestionInfo aimLessModeCongestionInfo){
 
     }
 
     @Override
-    public void onPlayRing(int i)
-    {
+    public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat){
 
     }
-
     @Override
-    public void updateAimlessModeStatistics(AimLessModeStat aimLessModeStat)
-    {
+    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo[] aMapNaviTrafficFacilityInfo){
 
     }
-
     @Override
-    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo[] aMapNaviTrafficFacilityInfo)
-    {
+    public void notifyParallelRoad(int parallelRoadType){
 
     }
-
     @Override
-    public void notifyParallelRoad(int parallelRoadType)
-    {
-
-    }
-
-    @Override
-    public void onNaviViewLoaded()
-    {
+    public void onNaviViewLoaded(){
 
     }
 
 
-    private void initView(Bundle savedInstanceState)
-    {
+
+
+    private void initView(Bundle savedInstanceState){
         mAMapNaviView = (AMapNaviView) findViewById(R.id.navi_view);
         mAMapNaviView.onCreate(savedInstanceState);
         mAMapNaviView.setAMapNaviViewListener(this);
@@ -115,22 +98,19 @@ public class GpsNaviActivity extends Activity implements AMapNaviListener, AMapN
     }
 
 
-    private void initData()
-    {
+    private void initData(){
         mAMapNavi.startNavi(AMapNavi.GPSNaviMode);
     }
 
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
         mAMapNaviView.onResume();
     }
 
     @Override
-    protected void onPause()
-    {
+    protected void onPause() {
         super.onPause();
         mAMapNaviView.onPause();
 
@@ -142,8 +122,7 @@ public class GpsNaviActivity extends Activity implements AMapNaviListener, AMapN
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         mAMapNaviView.onDestroy();
         //since 1.6.0 不再在naviview destroy的时候自动执行AMapNavi.stopNavi();
@@ -151,206 +130,150 @@ public class GpsNaviActivity extends Activity implements AMapNaviListener, AMapN
     }
 
     @Override
-    public void onInitNaviFailure()
-    {
+    public void onInitNaviFailure() {
         Toast.makeText(this, "init navi Failed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onInitNaviSuccess()
-    {
+    public void onInitNaviSuccess() {
         //mAMapNavi.calculateDriveRoute(mStartList, mEndList, mWayPointList, PathPlanningStrategy.DRIVING_DEFAULT);
     }
 
     @Override
-    public void onStartNavi(int type)
-    {
+    public void onStartNavi(int type) {
 
     }
 
     @Override
-    public void onTrafficStatusUpdate()
-    {
+    public void onTrafficStatusUpdate() {
 
     }
 
     @Override
-    public void onLocationChange(AMapNaviLocation location)
-    {
+    public void onLocationChange(AMapNaviLocation location) {
 
     }
 
     @Override
-    public void onGetNavigationText(int type, String text)
-    {
+    public void onGetNavigationText(int type, String text) {
 
     }
 
     @Override
-    public void onGetNavigationText(String s)
-    {
+    public void onEndEmulatorNavi() {
+    }
+
+    @Override
+    public void onArriveDestination() {
+    }
+
+    @Override
+    public void onCalculateRouteSuccess() {
+        mAMapNavi.startNavi(AMapNavi.EmulatorNaviMode);
+    }
+
+    @Override
+    public void onCalculateRouteFailure(int errorInfo) {
+    }
+
+    @Override
+    public void onReCalculateRouteForYaw() {
 
     }
 
     @Override
-    public void onEndEmulatorNavi()
-    {
-    }
-
-    @Override
-    public void onArriveDestination()
-    {
-    }
-
-
-    @Override
-    public void onCalculateRouteFailure(int errorInfo)
-    {
-    }
-
-    @Override
-    public void onReCalculateRouteForYaw()
-    {
+    public void onReCalculateRouteForTrafficJam() {
 
     }
 
     @Override
-    public void onReCalculateRouteForTrafficJam()
-    {
+    public void onArrivedWayPoint(int wayID) {
 
     }
 
     @Override
-    public void onArrivedWayPoint(int wayID)
-    {
+    public void onGpsOpenStatus(boolean enabled) {
+    }
+
+    @Override
+    public void onNaviSetting() {
+    }
+
+    @Override
+    public void onNaviMapMode(int isLock) {
 
     }
 
     @Override
-    public void onGpsOpenStatus(boolean enabled)
-    {
-    }
-
-    @Override
-    public void onNaviSetting()
-    {
-    }
-
-    @Override
-    public void onNaviMapMode(int isLock)
-    {
-
-    }
-
-    @Override
-    public void onNaviCancel()
-    {
+    public void onNaviCancel() {
         finish();
     }
 
 
     @Override
-    public void onNaviTurnClick()
-    {
+    public void onNaviTurnClick() {
 
     }
 
     @Override
-    public void onNextRoadClick()
-    {
+    public void onNextRoadClick() {
 
     }
 
 
     @Override
-    public void onScanViewButtonClick()
-    {
+    public void onScanViewButtonClick() {
     }
 
     @Deprecated
     @Override
-    public void onNaviInfoUpdated(AMapNaviInfo naviInfo)
-    {
+    public void onNaviInfoUpdated(AMapNaviInfo naviInfo) {
     }
 
     @Override
-    public void updateCameraInfo(AMapNaviCameraInfo[] aMapNaviCameraInfos)
-    {
-
+    public void onNaviInfoUpdate(NaviInfo naviinfo) {
     }
 
     @Override
-    public void onServiceAreaUpdate(AMapServiceAreaInfo[] aMapServiceAreaInfos)
-    {
+    public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo) {
 
     }
 
     @Override
-    public void onNaviInfoUpdate(NaviInfo naviinfo)
-    {
-    }
-
-    @Override
-    public void OnUpdateTrafficFacility(TrafficFacilityInfo trafficFacilityInfo)
-    {
+    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo aMapNaviTrafficFacilityInfo) {
 
     }
 
     @Override
-    public void OnUpdateTrafficFacility(AMapNaviTrafficFacilityInfo aMapNaviTrafficFacilityInfo)
-    {
+    public void showCross(AMapNaviCross aMapNaviCross) {
+    }
+
+    @Override
+    public void hideCross() {
+    }
+
+    @Override
+    public void showLaneInfo(AMapLaneInfo[] laneInfos, byte[] laneBackgroundInfo, byte[] laneRecommendedInfo) {
 
     }
 
     @Override
-    public void showCross(AMapNaviCross aMapNaviCross)
-    {
-    }
-
-    @Override
-    public void hideCross()
-    {
-    }
-
-    @Override
-    public void showModeCross(AMapModelCross aMapModelCross)
-    {
+    public void hideLaneInfo() {
 
     }
 
     @Override
-    public void hideModeCross()
-    {
+    public void onCalculateMultipleRoutesSuccess(int[] ints) {
 
-    }
-
-    @Override
-    public void showLaneInfo(AMapLaneInfo[] laneInfos, byte[] laneBackgroundInfo, byte[] laneRecommendedInfo)
-    {
-
-    }
-
-    @Override
-    public void hideLaneInfo()
-    {
-
-    }
-
-    @Override
-    public void onCalculateRouteSuccess(int[] ints)
-    {
-        mAMapNavi.startNavi(AMapNavi.EmulatorNaviMode);
     }
 
 
     @Override
-    public void onLockMap(boolean isLock)
-    {
+    public void onLockMap(boolean isLock) {
     }
 
     @Override
-    public boolean onNaviBackClick()
-    {
+    public boolean onNaviBackClick() {
         return false;
     }
 
